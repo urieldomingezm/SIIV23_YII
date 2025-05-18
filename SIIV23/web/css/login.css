@@ -1,0 +1,88 @@
+/* Estilo para el título principal */
+.container h2 {
+    color: #003366; /* Un azul oscuro para el título */
+    font-weight: bold;
+    margin-bottom: 1.5rem; /* Espacio debajo del título */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+/* Estilos personalizados para las pestañas */
+.custom-tab {
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 0 5px; /* Espacio entre pestañas */
+    color: #007bff; /* Texto azul por defecto */
+    background-color: transparent; /* Fondo transparente por defecto */
+    transition: all 0.3s ease; /* Transición suave */
+    padding: 10px 20px; /* Aumentar padding */
+    font-weight: bold; /* Texto en negrita */
+}
+
+.custom-tab.active {
+    background-color: #007bff; /* Fondo azul para la pestaña activa */
+    color: white; /* Texto blanco para la pestaña activa */
+    border-color: #007bff; /* Borde azul para la pestaña activa */
+}
+
+.custom-tab:hover {
+     background-color: #0056b3; /* Fondo azul más oscuro al pasar el ratón */
+     color: white;
+     border-color: #0056b3;
+}
+
+/* Estilos personalizados para la tarjeta */
+.custom-card {
+    border: 1px solid #dee2e6; /* Borde similar al de Bootstrap */
+    border-radius: 0.5rem; /* Bordes redondeados ligeramente más grandes */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Estilo para el título "Alumno" dentro de la pestaña */
+.custom-card-title {
+    background-color: #007bff; /* Fondo azul */
+    color: white; /* Texto blanco */
+    padding: 15px 20px; /* Aumentar espaciado interno */
+    margin: -1.5rem -1.5rem 20px -1.5rem; /* Ajustar márgenes para que ocupe todo el ancho del padding de la tarjeta */
+    font-size: 1.5rem; /* Tamaño de fuente más grande */
+    font-weight: bold;
+    border-top-left-radius: calc(0.5rem - 1px); /* Bordes redondeados arriba */
+    border-top-right-radius: calc(0.5rem - 1px);
+}
+
+/* Estilo para el botón de Iniciar Sesión */
+.custom-login-button {
+    background-color: #007bff; /* Fondo azul */
+    border-color: #007bff; /* Borde azul */
+    color: white; /* Texto blanco */
+    padding: 10px 30px; /* Aumentar padding */
+    font-size: 1.1rem; /* Tamaño de fuente ligeramente más grande */
+}
+
+.custom-login-button:hover {
+    background-color: #0056b3; /* Fondo azul más oscuro al pasar el ratón */
+    border-color: #0056b3;
+}
+
+/* Ajustes para los labels del formulario */
+.form-label {
+    font-weight: bold;
+    color: #555; /* Color de texto para los labels */
+    margin-bottom: .5rem; /* Espacio debajo del label */
+}
+
+/* Estilos para los acordeones dentro de la pestaña de aspirantes */
+#aspirantesAccordion .accordion-button {
+    font-weight: bold;
+    color: #007bff; /* Color del texto del encabezado del acordeón */
+}
+
+#aspirantesAccordion .accordion-button:not(.collapsed) {
+    color: #0056b3; /* Color del texto cuando está abierto */
+    background-color: #e9ecef; /* Fondo ligeramente gris cuando está abierto */
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+}
+
+#aspirantesAccordion .accordion-body {
+    padding: 15px; /* Espaciado interno del cuerpo del acordeón */
+}

@@ -24,6 +24,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <!-- Incluir Bootstrap 5 CSS -->
+    <link href="<?= Yii::getAlias('@web/css/bootstrap.min.css') ?>" rel="stylesheet">
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
@@ -68,15 +70,16 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
+<footer id="footer" class="mt-auto py-3" style="background-color: #807E82 !important;">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-12 text-center text-white">&copy; Instituto Tecnologico de Ciudad Victoria <?= date('Y') ?></div>
         </div>
     </div>
 </footer>
 
+<!-- Incluir Bootstrap 5 JS -->
+<script src="<?= Yii::getAlias('@web/js/bootstrap.bundle.min.js') ?>"></script>
 <?php $this->endBody() ?>
 </body>
 </html>
