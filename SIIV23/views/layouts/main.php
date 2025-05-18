@@ -31,12 +31,27 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
+<!-- Topbar with images -->
+<div class="topbar">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="topbar-images">
+                    <img src="plecaa.png" alt="Topbar Image 1" class="topbar-image">
+                    <img src="plecab.png" alt="Topbar Image 2" class="topbar-image">
+                    <img src="plecac.png" alt="Topbar Image 3" class="topbar-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <header id="header">
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark'] // Eliminado 'fixed-top'
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
