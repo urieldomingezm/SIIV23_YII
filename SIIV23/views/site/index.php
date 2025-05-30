@@ -1,53 +1,84 @@
 <?php
-
 /** @var yii\web\View $this */
+/** @var yii\bootstrap5\ActiveForm $form */
+/** @var app\models\LoginForm $model */
 
-$this->title = 'My Yii Application';
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
+
+$this->title = 'Inicio de Sesión';
 ?>
+
 <div class="site-index">
-
-    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <h1 class="display-4">Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-4">
+                <h2>INICIO DE SESIÓN GENERAL</h2>
             </div>
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
+            <div class="col-md-10">
+                <!-- Pestañas fuera de la tarjeta -->
+                <ul class="nav nav-pills justify-content-center mb-4" id="loginTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link custom-tab active" id="aspirantes-tab" data-bs-toggle="tab" data-bs-target="#aspirantes" type="button" role="tab" aria-controls="aspirantes" aria-selected="true" style="min-width: 120px;">ASPIRANTES</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link custom-tab" id="alumnos-tab" data-bs-toggle="tab" data-bs-target="#alumnos" type="button" role="tab" aria-controls="alumnos" aria-selected="false" style="min-width: 120px;">ALUMNOS</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link custom-tab" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="false" style="min-width: 120px;">PERSONAL</button>
+                    </li>
+                </ul>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <div class="card custom-card">
+                    <div class="card-body p-4">
+                        <div class="tab-content" id="loginTabsContent">
+                            <div class="tab-pane fade show active" id="aspirantes" role="tabpanel" aria-labelledby="aspirantes-tab">
+                                <!-- Contenido para Aspirantes con Acordeones -->
+                                <div class="accordion" id="aspirantesAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingNuevoIngreso">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNuevoIngreso" aria-expanded="false" aria-controls="collapseNuevoIngreso">
+                                                Nuevo Ingreso
+                                            </button>
+                                        </h2>
+                                        <div id="collapseNuevoIngreso" class="accordion-collapse collapse" aria-labelledby="headingNuevoIngreso" data-bs-parent="#aspirantesAccordion">
+                                            <div class="accordion-body">
+                                                <?php echo $this->render('login_secciones/seccion_aspirante_nuevo_registro'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingIniciarSesionAspirante">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIniciarSesionAspirante" aria-expanded="false" aria-controls="collapseIniciarSesionAspirante">
+                                                Iniciar Sesión de Aspirante
+                                            </button>
+                                        </h2>
+                                        <div id="collapseIniciarSesionAspirante" class="accordion-collapse collapse" aria-labelledby="headingIniciarSesionAspirante" data-bs-parent="#aspirantesAccordion">
+                                            <div class="accordion-body">
+                                                <?php echo $this->render('login_secciones/seccion_aspirante_iniciar'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="alumnos" role="tabpanel" aria-labelledby="alumnos-tab">
+                                <!-- Contenido para Alumnos -->
+                                <div class="card-title custom-card-title">Alumno</div>
+                                <div class="accordion-body">
+                                    <?php echo $this->render('login_secciones/seccion_alumno'); ?>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+                                <!-- Contenido para Personal Académico -->
+                                <div class="card-title custom-card-title">Personal Académico</div>
+                                <div class="accordion-body">
+                                    <?php echo $this->render('login_secciones/seccion_personal'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
