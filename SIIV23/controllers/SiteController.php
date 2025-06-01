@@ -61,6 +61,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->view->params['hideNavbar'] = true;
+        $this->view->params['isLoginPage'] = true;
+        
         return $this->render('index');
     }
 

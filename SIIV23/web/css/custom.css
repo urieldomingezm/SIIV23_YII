@@ -1,0 +1,29 @@
+/* Estilos para el topbar */
+.topbar-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.topbar-image {
+    height: 40px;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.topbar-image:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 767.98px) {
+    .topbar {
+        padding: 5px 0;
+    }
+    
+    .topbar-image {
+        height: 30px;
+    }
+}
+
+/* Resto de tus estilos... */

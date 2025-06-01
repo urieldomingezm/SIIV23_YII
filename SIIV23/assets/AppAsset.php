@@ -21,12 +21,14 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/login.css', // Añade esta línea
+        'css/custom.css', // Agregar esta línea
     ];
     public $js = [
+        'js/bootstrap.bundle.min.js', // Asegura que este archivo esté incluido
     ];
     public $depends = [
-        // 'yii\web\YiiAsset', // Elimina o comenta esta línea
+        'yii\web\YiiAsset',
         'yii\bootstrap5\BootstrapAsset',
+        'yii\bootstrap5\BootstrapPluginAsset',
     ];
 }

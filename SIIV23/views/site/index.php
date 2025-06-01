@@ -10,30 +10,37 @@ $this->title = 'Inicio de Sesión';
 ?>
 
 <div class="site-index">
-    <div class="container mt-5">
+    <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-12 text-center mb-4">
-                <h2>INICIO DE SESIÓN GENERAL</h2>
+                <h2 class="text-uppercase fw-bold">Inicio de Sesión General</h2>
             </div>
-            <div class="col-md-10">
-                <!-- Pestañas fuera de la tarjeta -->
-                <ul class="nav nav-pills justify-content-center mb-4" id="loginTabs" role="tablist">
+            <div class="col-lg-10">
+                <!-- Tabs -->
+                <ul class="nav nav-pills nav-justified mb-4" id="loginTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link custom-tab active" id="aspirantes-tab" data-bs-toggle="tab" data-bs-target="#aspirantes" type="button" role="tab" aria-controls="aspirantes" aria-selected="true" style="min-width: 120px;">ASPIRANTES</button>
+                        <button class="nav-link active" id="aspirantes-tab" data-bs-toggle="tab" data-bs-target="#aspirantes" type="button" role="tab" aria-controls="aspirantes" aria-selected="true">
+                            Aspirantes
+                        </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link custom-tab" id="alumnos-tab" data-bs-toggle="tab" data-bs-target="#alumnos" type="button" role="tab" aria-controls="alumnos" aria-selected="false" style="min-width: 120px;">ALUMNOS</button>
+                        <button class="nav-link" id="alumnos-tab" data-bs-toggle="tab" data-bs-target="#alumnos" type="button" role="tab" aria-controls="alumnos" aria-selected="false">
+                            Alumnos
+                        </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link custom-tab" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="false" style="min-width: 120px;">PERSONAL</button>
+                        <button class="nav-link" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="false">
+                            Personal
+                        </button>
                     </li>
                 </ul>
 
-                <div class="card custom-card">
+                <!-- Card -->
+                <div class="card shadow rounded">
                     <div class="card-body p-4">
                         <div class="tab-content" id="loginTabsContent">
+                            <!-- Aspirantes Tab -->
                             <div class="tab-pane fade show active" id="aspirantes" role="tabpanel" aria-labelledby="aspirantes-tab">
-                                <!-- Contenido para Aspirantes con Acordeones -->
                                 <div class="accordion" id="aspirantesAccordion">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingNuevoIngreso">
@@ -47,6 +54,7 @@ $this->title = 'Inicio de Sesión';
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingIniciarSesionAspirante">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIniciarSesionAspirante" aria-expanded="false" aria-controls="collapseIniciarSesionAspirante">
@@ -61,23 +69,22 @@ $this->title = 'Inicio de Sesión';
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Alumnos Tab -->
                             <div class="tab-pane fade" id="alumnos" role="tabpanel" aria-labelledby="alumnos-tab">
-                                <!-- Contenido para Alumnos -->
-                                <div class="card-title custom-card-title">Alumno</div>
-                                <div class="accordion-body">
-                                    <?php echo $this->render('login_secciones/seccion_alumno'); ?>
-                                </div>
+                                <h5 class="text-primary fw-semibold mb-3">Ingreso de Alumnos</h5>
+                                <?php echo $this->render('login_secciones/seccion_alumno'); ?>
                             </div>
+
+                            <!-- Personal Tab -->
                             <div class="tab-pane fade" id="personal" role="tabpanel" aria-labelledby="personal-tab">
-                                <!-- Contenido para Personal Académico -->
-                                <div class="card-title custom-card-title">Personal Académico</div>
-                                <div class="accordion-body">
-                                    <?php echo $this->render('login_secciones/seccion_personal'); ?>
-                                </div>
+                                <h5 class="text-primary fw-semibold mb-3">Ingreso del Personal Académico</h5>
+                                <?php echo $this->render('login_secciones/seccion_personal'); ?>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End Card -->
             </div>
         </div>
     </div>
