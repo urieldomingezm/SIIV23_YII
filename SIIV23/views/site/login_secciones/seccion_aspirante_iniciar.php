@@ -22,7 +22,8 @@ use yii\bootstrap5\ActiveForm;
                            name="iniciar_session_aspirante_curp" 
                            maxlength="18"
                            data-validate-field="curp"
-                           placeholder="Ingresa tu CURP">
+                           placeholder="Ingresa tu CURP"
+                           maxlength="18">
                 </div>
                 <div class="error-container mt-1" id="error_aspirante_curp"></div>
             </div>
@@ -60,7 +61,8 @@ use yii\bootstrap5\ActiveForm;
                            id="iniciar_session_aspirante_captcha" 
                            name="iniciar_session_aspirante_captcha"
                            data-validate-field="captcha"
-                           placeholder="Ingresa el código que ves en la imagen">
+                           placeholder="Ingresa el código que ves en la imagen"
+                           maxlength="5">
                     <canvas class="captcha-canvas" width="150" height="40"></canvas>
                     <button class="btn btn-outline-secondary" type="button" onclick="refreshCaptcha(this)">
                         <i class="bi bi-arrow-clockwise"></i>

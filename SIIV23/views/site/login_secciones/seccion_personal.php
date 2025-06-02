@@ -38,7 +38,8 @@ use yii\bootstrap5\ActiveForm;
                            id="personal_password"
                            name="personal_password"
                            data-validate-field="password"
-                           placeholder="Ingresa tu contraseña">
+                           placeholder="Ingresa tu contraseña"
+                           maxlength="30">
                     <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('personal_password', this)">
                         <i class="bi bi-eye-slash"></i>
                     </button>
@@ -58,7 +59,8 @@ use yii\bootstrap5\ActiveForm;
                            id="personal_captcha"
                            name="personal_captcha"
                            data-validate-field="captcha"
-                           placeholder="Ingresa el código que ves en la imagen">
+                           placeholder="Ingresa el código que ves en la imagen"
+                           maxlength="5">
                     <canvas class="captcha-canvas" width="150" height="40"></canvas>
                     <button class="btn btn-outline-secondary" type="button" onclick="refreshCaptcha(this)">
                         <i class="bi bi-arrow-clockwise"></i>

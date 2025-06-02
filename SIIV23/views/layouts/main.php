@@ -30,6 +30,37 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <?= Html::jsFile('@web/js/form-validations.js') ?>
     <link rel="stylesheet" href="<?= Yii::$app->request->baseUrl ?>/css/custom-validate.css">
+    <style>
+        /* Estilo para el botón Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #343a40;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            background: #495057;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -368,6 +399,33 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </div>
         </div>
     </footer>
+
+    <!-- Botón Back to Top -->
+    <button onclick="topFunction()" id="backToTopBtn" class="back-to-top" title="Volver arriba">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mostrar u ocultar el botón cuando el usuario se desplaza
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            var backToTopBtn = document.getElementById("backToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        }
+
+        // Cuando el usuario hace clic en el botón, sube al principio del documento
+        function topFunction() {
+            document.body.scrollTop = 0; // Para Safari
+            document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+        }
+    </script>
 
     <?php $this->endBody() ?>
 </body>

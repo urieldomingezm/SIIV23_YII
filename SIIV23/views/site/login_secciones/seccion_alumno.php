@@ -1,4 +1,5 @@
 <?php
+
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 ?>
@@ -16,12 +17,13 @@ use yii\bootstrap5\ActiveForm;
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
                     </span>
-                    <input type="text" 
-                           class="form-control" 
-                           id="alumno_numero_control"
-                           name="alumno_numero_control"
-                           data-validate-field="numero_control"
-                           placeholder="Ingresa tu número de control">
+                    <input type="text"
+                        class="form-control"
+                        id="alumno_numero_control"
+                        name="alumno_numero_control"
+                        data-validate-field="numero_control"
+                        placeholder="Ingresa tu número de control"
+                        >
                 </div>
                 <div class="error-container mt-1" id="error_alumno_numero_control"></div>
             </div>
@@ -33,12 +35,13 @@ use yii\bootstrap5\ActiveForm;
                     <span class="input-group-text">
                         <i class="bi bi-lock"></i>
                     </span>
-                    <input type="password" 
-                           class="form-control" 
-                           id="alumno_password"
-                           name="alumno_password"
-                           data-validate-field="password"
-                           placeholder="Ingresa tu NIP">
+                    <input type="password"
+                        class="form-control"
+                        id="alumno_password"
+                        name="alumno_password"
+                        data-validate-field="password"
+                        placeholder="Ingresa tu NIP"
+                        maxlength="4">
                     <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('alumno_password', this)">
                         <i class="bi bi-eye-slash"></i>
                     </button>
@@ -53,12 +56,13 @@ use yii\bootstrap5\ActiveForm;
                     <span class="input-group-text">
                         <i class="bi bi-shield-lock"></i>
                     </span>
-                    <input type="text" 
-                           class="form-control" 
-                           id="alumno_captcha"
-                           name="alumno_captcha"
-                           data-validate-field="captcha"
-                           placeholder="Ingresa el código que ves en la imagen">
+                    <input type="text"
+                        class="form-control"
+                        id="alumno_captcha"
+                        name="alumno_captcha"
+                        data-validate-field="captcha"
+                        placeholder="Ingresa el código que ves en la imagen"
+                        maxlength="5">
                     <canvas class="captcha-canvas" width="150" height="40"></canvas>
                     <button class="btn btn-outline-secondary" type="button" onclick="refreshCaptcha(this)">
                         <i class="bi bi-arrow-clockwise"></i>
