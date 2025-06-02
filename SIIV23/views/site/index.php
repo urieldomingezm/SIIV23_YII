@@ -16,20 +16,44 @@ $this->title = 'Inicio de Sesión';
                 <h2 class="text-uppercase fw-bold">Inicio de Sesión General</h2>
             </div>
             <div class="col-lg-10">
-                <!-- Tabs -->
+                <!-- Tabs con bordes y mejor estilizado -->
                 <ul class="nav nav-pills nav-justified mb-4" id="loginTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="aspirantes-tab" data-bs-toggle="tab" data-bs-target="#aspirantes" type="button" role="tab" aria-controls="aspirantes" aria-selected="true">
+                        <button class="nav-link active border rounded-top px-4 py-3 shadow-sm" 
+                                id="aspirantes-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#aspirantes" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="aspirantes" 
+                                aria-selected="true">
+                            <i class="bi bi-person-plus-fill me-2"></i>
                             Aspirantes
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="alumnos-tab" data-bs-toggle="tab" data-bs-target="#alumnos" type="button" role="tab" aria-controls="alumnos" aria-selected="false">
+                        <button class="nav-link border rounded-top px-4 py-3 shadow-sm" 
+                                id="alumnos-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#alumnos" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="alumnos" 
+                                aria-selected="false">
+                            <i class="bi bi-mortarboard-fill me-2"></i>
                             Alumnos
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="false">
+                        <button class="nav-link border rounded-top px-4 py-3 shadow-sm" 
+                                id="personal-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#personal" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="personal" 
+                                aria-selected="false">
+                            <i class="bi bi-person-badge-fill me-2"></i>
                             Personal
                         </button>
                     </li>
@@ -112,3 +136,35 @@ $this->title = 'Inicio de Sesión';
         </div>
     </div>
 </div>
+
+<!-- Agregar estos estilos en tu archivo CSS o en un bloque de estilo -->
+<style>
+.nav-pills .nav-link {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    margin: 0 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.nav-pills .nav-link.active {
+    background-color: #fff;
+    color: #0d6efd;
+    border-bottom: none !important;
+    transform: translateY(-2px);
+}
+
+.nav-pills .nav-link.active:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #fff;
+}
+</style>
