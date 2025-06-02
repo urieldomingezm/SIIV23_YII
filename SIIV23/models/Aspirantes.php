@@ -3,12 +3,13 @@
 namespace app\models;
 
 use Yii;
-use yii\base\Model;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * Aspirantes is the model behind the aspirantes table.
  */
-class Aspirantes extends Model
+class Aspirantes extends ActiveRecord implements IdentityInterface
 {
     public $aspirante_id;
     public $aspirante_apellido_paterno;
@@ -51,5 +52,58 @@ class Aspirantes extends Model
             'aspirante_email' => 'Email',
             'aspirante_nip' => 'NIP',
         ];
+    }
+
+    public static function tableName()
+    {
+        return 'aspirantes';
+    }
+
+    /**
+     * Métodos requeridos por IdentityInterface
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne(['aspirante_id' => $id]);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+
+    public function getId()
+    {
+        return $this->aspirante_id;
+    }
+
+    public function getAuthKey()
+    {
+        return null;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return true;
+    }
+
+    /**
+     * Valida el login del aspirante
+     */
+    public static function login($curp, $nip)
+    {
+        $aspirante = static::findOne(['aspirante_curp' => $curp]);
+        if ($aspirante && $aspirante->validateNip($nip)) {
+            return $aspirante;
+        }
+        return null;
+    }
+
+    /**
+     * Valida el NIP del aspirante
+     */
+    public function validateNip($nip)
+    {
+        return Yii::$app->security->validatePassword($nip, $this->aspirante_nip);
     }
 }

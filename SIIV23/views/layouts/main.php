@@ -29,6 +29,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <?= Html::jsFile('@web/js/form-validations.js') ?>
+    <link rel="stylesheet" href="<?= Yii::$app->request->baseUrl ?>/css/custom-validate.css">
 </head>
 
 <body class="d-flex flex-column h-100">

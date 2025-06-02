@@ -89,3 +89,26 @@ $this->title = 'Inicio de Sesión';
         </div>
     </div>
 </div>
+
+<!-- Modal de Mensajes -->
+<div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mensajeModalLabel">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <span id="modalTitulo">Mensaje del Sistema</span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="modalMensaje" class="alert mb-0">
+                    <!-- El mensaje se insertará aquí -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

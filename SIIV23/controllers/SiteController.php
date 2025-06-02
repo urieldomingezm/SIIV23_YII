@@ -9,6 +9,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Alumnos;
+use app\models\Aspirantes;
+use app\models\Personal;
 
 class SiteController extends Controller
 {
@@ -78,15 +81,56 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        $post = Yii::$app->request->post();
+        
+        if ($post) {
+            // Validar CSRF token
+            if (!Yii::$app->request->validateCsrfToken()) {
+                Yii::$app->session->setFlash('error', 'Token de seguridad inválido');
+                return $this->render('index');
+            }
+
+            // Validar captcha
+            if (!$this->validateCaptcha($post)) {
+                Yii::$app->session->setFlash('error', 'Código de verificación incorrecto');
+                return $this->render('index');
+            }
+
+            switch ($post['form_type']) {
+                case 'alumno_login':
+                    return $this->handleAlumnoLogin($post);
+                case 'aspirante_login':
+                    return $this->handleAspiranteLogin($post);
+                case 'personal_login':
+                    return $this->handlePersonalLogin($post);
+            }
         }
 
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->render('index');
+    }
+
+    protected function handleAlumnoLogin($post)
+    {
+        $alumno = Alumnos::findOne(['alumno_numero_control' => $post['alumno_numero_control']]);
+        
+        if ($alumno && $alumno->validatePassword($post['alumno_password'])) {
+            if (Yii::$app->user->login($alumno)) {
+                // Actualizar último acceso
+                $alumno->alumno_ultimo_acceso = date('Y-m-d H:i:s');
+                $alumno->save();
+                
+                return $this->goBack();
+            }
+        }
+
+        Yii::$app->session->setFlash('error', 'Número de control o NIP incorrectos');
+        return $this->render('index');
+    }
+
+    protected function validateCaptcha($post)
+    {
+        // Implementar validación de captcha
+        return true; // Por ahora retornamos true
     }
 
     /**

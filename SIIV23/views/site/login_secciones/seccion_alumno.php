@@ -1,51 +1,79 @@
-<form id="formulario_alumno" method="POST" class="rounded">
-    <input type="hidden" name="form_type" value="alumno_login">
+<?php
+use yii\bootstrap5\Html;
+use yii\bootstrap5\ActiveForm;
+?>
 
-    <div class="row g-2">
-        <!-- Número de Control -->
-        <div class="col-md-4">
-            <div class="mb-2">
-                <label for="alumno_numero_control" class="form-label">NUMERO DE CONTROL</label>
-                <input type="text" class="form-control form-control-sm" id="alumno_numero_control" name="alumno_numero_control">
-                <div class="invalid-feedback" style="display: block; font-size: 0.8rem;"></div>
+<div class="alumno-login">
+    <form id="formulario_alumno" method="POST" class="needs-validation" novalidate>
+        <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->csrfToken) ?>
+        <?= Html::hiddenInput('form_type', 'alumno_login') ?>
+
+        <div class="row g-3">
+            <!-- Número de Control -->
+            <div class="col-md-6">
+                <label class="form-label" for="alumno_numero_control">Número de Control</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                    </span>
+                    <input type="text" 
+                           class="form-control" 
+                           id="alumno_numero_control"
+                           name="alumno_numero_control"
+                           data-validate-field="numero_control"
+                           placeholder="Ingresa tu número de control">
+                </div>
+                <div class="error-container mt-1" id="error_alumno_numero_control"></div>
             </div>
-        </div>
 
-        <!-- NIP -->
-        <div class="col-md-4">
-            <div class="mb-2">
-                <label for="alumno_password" class="form-label">NIP</label>
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1 position-relative">
-                        <input type="password" class="form-control form-control-sm passwordInput" id="alumno_password" name="alumno_password" maxlength="4">
-                        <div class="invalid-feedback" style="display: block; font-size: 0.8rem;"></div>
-                    </div>
-                    <button type="button" class="btn btn-secondary btn-sm ms-2 togglePassword" onclick="togglePasswordVisibility('alumno_password', this)">
+            <!-- NIP -->
+            <div class="col-md-6">
+                <label class="form-label" for="alumno_password">NIP</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-lock"></i>
+                    </span>
+                    <input type="password" 
+                           class="form-control" 
+                           id="alumno_password"
+                           name="alumno_password"
+                           data-validate-field="password"
+                           placeholder="Ingresa tu NIP">
+                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('alumno_password', this)">
                         <i class="bi bi-eye-slash"></i>
                     </button>
                 </div>
+                <div class="error-container mt-1" id="error_alumno_password"></div>
             </div>
-        </div>
 
-        <!-- CAPTCHA -->
-        <div class="col-md-4">
-            <div class="mb-2">
-                <label for="alumno_captcha" class="form-label">CAPTCHA</label>
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1 position-relative">
-                        <input type="text" class="form-control form-control-sm captchaInput" id="alumno_captcha" name="alumno_captcha" maxlength="5">
-                        <div class="invalid-feedback" style="display: block; font-size: 0.8rem;"></div>
-                    </div>
-                    <canvas class="captchaCanvas" width="128" height="44" class="ms-2"></canvas>
-                    <button type="button" class="btn btn-secondary btn-sm me-1 ms-2" onclick="generateCaptcha('formulario_alumno')">
+            <!-- Captcha -->
+            <div class="col-12">
+                <label class="form-label" for="alumno_captcha">Verificación de Seguridad</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-shield-lock"></i>
+                    </span>
+                    <input type="text" 
+                           class="form-control" 
+                           id="alumno_captcha"
+                           name="alumno_captcha"
+                           data-validate-field="captcha"
+                           placeholder="Ingresa el código que ves en la imagen">
+                    <canvas class="captcha-canvas" width="150" height="40"></canvas>
+                    <button class="btn btn-outline-secondary" type="button" onclick="refreshCaptcha(this)">
                         <i class="bi bi-arrow-clockwise"></i>
                     </button>
                 </div>
+                <div class="error-container mt-1" id="error_alumno_captcha"></div>
             </div>
         </div>
-    </div>
 
-    <div class="d-flex justify-content-center mt-3">
-        <button type="submit" class="btn btn-primary btn-sm">Iniciar Sesión</button>
-    </div>
-</form>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

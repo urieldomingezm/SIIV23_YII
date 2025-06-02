@@ -1,0 +1,79 @@
+/* Contenedor para mensajes de error */
+.error-container {
+    min-height: 20px;
+    margin-top: 4px;
+    position: relative;
+    clear: both;
+}
+
+/* Estilo para mensajes de just-validate */
+.just-validate-error-label {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+    padding-left: 0.5rem;
+    position: relative;
+    clear: both;
+    width: 100%;
+}
+
+.just-validate-error-label::before {
+    content: "•";
+    position: absolute;
+    left: 0.5rem;
+    color: #dc3545;
+}
+
+/* Estilo para input inválido */
+.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Estilo para input válido */
+.is-valid {
+    border-color: #198754;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Ajustes para el input group */
+.input-group .form-control.is-invalid,
+.input-group .form-control.is-valid {
+    z-index: 3;
+}
+
+/* Ajustes para mantener la altura del contenedor */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Evitar que el mensaje de error afecte el layout */
+.input-group {
+    margin-bottom: 0;
+}
+
+/* Ajuste específico para los mensajes de captcha */
+.captcha-container .just-validate-error-label {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+
+/* Espacio adicional para grupos de input con mensajes de error */
+.input-group + .just-validate-error-label {
+    position: relative;
+    margin-top: 0.25rem;
+}
+
+/* Asegurar que los iconos de validación no se sobrepongan con otros elementos */
+.input-group .form-control:not(:last-child).is-invalid,
+.input-group .form-control:not(:last-child).is-valid {
+    background-position: right calc(2.5em) center;
+}

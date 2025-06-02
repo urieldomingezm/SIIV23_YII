@@ -20,8 +20,21 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\Alumnos',
             'enableAutoLogin' => true,
+            'loginUrl' => ['site/index'],
+        ],
+        'aspiranteUser' => [
+            'class' => 'yii\web\User',
+            'identityClass' => 'app\models\Aspirantes',
+            'enableAutoLogin' => true,
+            'loginUrl' => ['site/index'],
+        ],
+        'personalUser' => [
+            'class' => 'yii\web\User',
+            'identityClass' => 'app\models\Personal',
+            'enableAutoLogin' => true,
+            'loginUrl' => ['site/index'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -42,14 +55,17 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'login' => 'auth/login',
+                'logout' => 'auth/logout',
+                'alumno/dashboard' => 'alumno/dashboard',
+                'aspirante/dashboard' => 'aspirante/dashboard',
+                'personal/dashboard' => 'personal/dashboard',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

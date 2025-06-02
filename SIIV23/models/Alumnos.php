@@ -3,12 +3,13 @@
 namespace app\models;
 
 use Yii;
-use yii\base\Model;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * Alumnos es el modelo que representa la tabla `alumnos`.
  */
-class Alumnos extends Model
+class Alumnos extends ActiveRecord implements IdentityInterface
 {
     public $alumno_id;
     public $alumno_numero_control;
@@ -54,5 +55,58 @@ class Alumnos extends Model
     public static function findByNumeroControl($numeroControl)
     {
         // Implementar la lógica para buscar un alumno por su número de control
+    }
+
+    public static function tableName()
+    {
+        return 'alumnos';
+    }
+
+    /**
+     * Métodos requeridos por IdentityInterface
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne(['alumno_id' => $id]);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+
+    public function getId()
+    {
+        return $this->alumno_id;
+    }
+
+    public function getAuthKey()
+    {
+        return null;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return true;
+    }
+
+    /**
+     * Valida el login del alumno
+     */
+    public static function login($numero_control, $password)
+    {
+        $alumno = static::findOne(['alumno_numero_control' => $numero_control]);
+        if ($alumno && $alumno->validatePassword($password)) {
+            return $alumno;
+        }
+        return null;
+    }
+
+    /**
+     * Valida la contraseña del alumno
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->alumno_password);
     }
 }
